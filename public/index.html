@@ -1,0 +1,102 @@
+<!--
+ * Copyright (c) 2014 IBM Corp.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v1.0 which accompany this distribution.
+ *
+ * The Eclipse Public License is available at
+ *   http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ *   http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *   Bryan Boyd - Initial implementation
+ -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Traffic Mapper</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="text/javascript">
+			if (!window.WebSocket) {
+				alert("WebSocket is not supported in this browser.  Please switch to one of the following: Firefox 11+, Chrome 16+, Safari 6+");
+			}
+			//var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+			//var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+			//if (!(is_chrome || is_safari)) {
+			//	alert("For best results, use Chrome / Safari");
+			//}
+		</script>
+	</head>
+	<body onload="init()" onresize="resize()" style="overflow: hidden">
+		<div class="demoContentContainer" id="mainContentContainer">
+			<div class="demoMainContainer" id="mainContent">
+				<div id="openLayersMap"></div>
+				<canvas onclick="void(0);" ontouchstart="demo.ui.touchStart(event)" ontouchmove="demo.ui.touchMove(event)" ontouchend="demo.ui.touchEnd(event);" ontouchcancel="demo.ui.touchCancel(event)" id="canvas" width="800" height="600" >[No canvas support]</canvas>
+			</div>
+
+			<div id="toolbarContainer">
+				<div class="btn-toolbar">
+					<div class="btn-group">
+						<button class="btn" id="zoomOutBtn" onclick="demo.ui.zoomOut()">&#8722;</button>
+						<!--button class="btn" id="switchLayerBtn" onclick="demo.ui.switchLayer()"><i class="icon-globe"></i></button-->
+						<button class="btn" id="zoomInBtn" onclick="demo.ui.zoomIn()">+</button>
+					</div>
+					<div class="btn-group">
+						<button class="btn" id="createFence" onclick="demo.createFence()"><i class="icon-exclamation-sign"></i></button>
+					</div>
+					<div class="btn-group">
+						<button class="btn" id="toggleMapBtn" data-toggle="lightbox" href="#help">Help</button>
+						<button class="btn" onclick="window.open('tester/','_blank');">Tester</button>
+						<button class="btn" id="toggleMapBtn" onclick="demo.ui.toggleMap()">Toggle Map</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="idContainer">
+				<span class="mylabel">ID: </span>
+				<span class="statValue" id="browserId"></span>
+			</div>
+			<div id="framerateContainer">
+				<span class="value statValue"><span id="statFramerate">0</span> fps</span>
+			</div>
+			<div class="bottomContainer" id="bottomContainer" style="border-radius: 5px 5px 0 0; bottom: 0px; padding: 12px 8px 8px 8px;">
+				<div><span class="statValue" style="font-size: 32px" id="statConnectionCount">0</span><span class="statSuffix">car(s)</span></div>
+			</div>
+
+			<div id="help" class="lightbox fade" style="z-index: 2000; display: none" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="lightbox-content">
+					<img src="img/architecture.png">
+				</div>
+			</div>
+
+			<!-- Popovers -->
+			<a id="rightPop" href="#" data-animation="false" data-trigger="manual" data-toggle="popover" data-placement="right" data-content="content" data-original-title="Title">&nbsp;</a>
+			<a id="leftPop" href="#" data-animation="false" data-trigger="manual" data-toggle="popover" data-placement="left" data-content="content" data-original-title="Title">&nbsp;</a>
+		</div>
+
+		<script type="text/javascript" src="js/utils/OpenLayers.js"></script>
+		<script type="text/javascript" src="js/utils/jquery-1.9.0.js"></script>
+		<script type="text/javascript" src="js/utils/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/utils/bootstrap-lightbox.min.js"></script>
+		<script type="text/javascript" src="js/utils/mqttws31.js"></script>
+
+		<script type="text/javascript" src="config/settings.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/Demo.js"></script>
+		<script type="text/javascript" src="js/UI.js"></script>
+		<script type="text/javascript" src="js/MQTTClient.js"></script>
+
+		<script type="text/javascript" src="js/Map/Overlay.js"></script>
+		<script type="text/javascript" src="js/Map/MapObject.js"></script>
+		<script type="text/javascript" src="js/Map/MapGraph.js"></script>
+		<script type="text/javascript" src="js/Map/Fence.js"></script>
+
+		<script type="text/javascript" src="js/Map/MapPolygon.js"></script>
+		<script type="text/javascript" src="js/Map/FencePolygon.js"></script>
+	</body>
+</html>

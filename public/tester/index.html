@@ -1,0 +1,90 @@
+<!--
+ * Copyright (c) 2014 IBM Corp.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v1.0 which accompany this distribution.
+ *
+ * The Eclipse Public License is available at
+ *   http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ *   http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *   Bryan Boyd - Initial implementation
+ -->
+
+<html>
+	<head>
+		<title>Add Overlay</title>
+		<style>
+			html * {
+				font-size: 24px;
+				font-family: HelveticaNeue-Light, sans-serif;
+			}
+			#statusMessage {
+				margin: 10px 10px 0 10px;
+				border: 1px solid black;
+				padding: 10px;
+				box-shadow: 2px 2px 4px #aaa;
+				display: none;
+			}
+			pre {
+				margin: 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<table cellpadding=5>
+			<tr>
+				<td>
+					<b>ID</b>
+				</td>
+				<td>
+					<input type="text" id="id" value=""></input><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Message</b>
+				</td>
+				<td>
+					<input type="text" id="message" value="Airbag deployed!"></input><br>
+				</td>
+			</tr>
+		</table>
+		<button type="button" id="button">Send Message</button>
+		<br><br>
+		<table cellpadding=5>
+			<tr>
+				<td>
+					<b>ID</b>
+				</td>
+				<td>
+					<input type="text" id="prop_id" value=""></input><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Property</b>
+				</td>
+				<td>
+					<input type="text" id="property" value="speed"></input><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Value</b>
+				</td>
+				<td>
+					<input type="text" id="value" value="60"></input><br>
+				</td>
+			</tr>
+		</table>
+		<button type="button" id="propButton">Update Property</button>
+	</body>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/mqttws31.js"></script>
+	<script type="text/javascript" src="../config/settings.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</html>

@@ -1,0 +1,349 @@
+/*******************************************************************************
+ * Copyright (c) 2014 IBM Corp.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v1.0 which accompany this distribution.
+ *
+ * The Eclipse Public License is available at
+ *   http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ *   http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *   Bryan Boyd - Initial implementation 
+ *******************************************************************************/
+
+body {
+	font-family: Arial, Tahoma, Verdana, sans-serif;
+	color: #222;
+	background-color: #eee;
+	margin: 0px;
+	height: 100%;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+h2, h3 {
+	margin-top: 0px;
+}
+
+.olImageLoadError {
+	//display: none !important;
+} 
+div[class="tooltip-inner"] {
+	max-width: 350px;
+}
+
+.demoContentContainer {
+	overflow: hidden;
+}
+
+.demoMainContainer {
+	float: left;
+	width: 65%;
+
+	margin-right: 20px;
+
+	min-height: 500px;
+}
+
+#instructionContainer {
+	position: absolute;
+	left: 210px;
+	bottom: 5px;
+	z-index: 3;
+	display: none;
+
+	width: 250px;
+	border: 2px solid #ddd;
+	border-radius: 5px;
+	margin-top: 20px;
+	padding: 10px 10px;
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+.small {
+	padding: 0 5px 0 5px;
+	font-size: 0.9em;
+}
+.nopadding {
+	margin: 0 5px 0 0;
+}
+
+#idContainer {
+	z-index: 3;
+	visibility: hidden;
+	background: rgba(0,0,0,0.75);
+	border-radius: 5px;
+	padding: 5px;
+	color: white;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+}
+
+#driver_idContainer {
+	z-index: 3;
+	visibility: hidden;
+	background: rgba(0,0,0,0.75);
+	border-radius: 5px;
+	padding: 5px;
+	color: white;
+}
+
+
+#framerateContainer {
+	z-index: 3;
+	visibility: hidden;
+	background: rgba(0,0,0,0.75);
+	border-radius: 5px;
+	padding: 5px;
+	color: white;
+	position: absolute;
+	right: 5px;
+	bottom: 40px;
+}
+
+#toolbarContainer {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 3;
+	max-width: 530px;
+	visibility: hidden;
+
+	background: rgba(0,0,0,0.75);
+	border-radius: 0 0 5px 5px;
+	margin-bottom: 20px;
+	padding: 3px 20px 0 20px;
+}
+
+#poiContainer {
+	position: absolute;
+	bottom: 80px;
+	z-index: 3;
+	width: 509px;
+	visibility: hidden;
+
+	background: rgba(0,0,0,0.8);
+	border-radius: 5px 5px 5px 5px;
+	padding: 20px;
+}
+
+.poiIcon {
+	width: 30px;
+	height: 30px;
+	padding: 10px;
+}
+
+.gradientContainer {
+	line-height: 30px;
+	vertical-align: middle;
+	padding: 0 0 8px 0;
+}
+
+.gradientBox {
+	width: 300px;
+	background: -moz-linear-gradient(left, #0000ff 0%, #00ff00 33%, #ffff00 66%, #ff0000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#0000ff), color-stop(33%,#00ff00), color-stop(66%,#ffff00), color-stop(100%,#ff0000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, #0000ff 0%,#00ff00 33%,#ffff00 66%,#ff0000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, #0000ff 0%,#00ff00 33%,#ffff00 66%,#ff0000 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, #0000ff 0%,#00ff00 33%,#ffff00 66%,#ff0000 100%); /* IE10+ */
+	background: linear-gradient(to right, #0000ff 0%,#00ff00 33%,#ffff00 66%,#ff0000 100%); /* W3C */
+}
+
+#topContainer {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 3;
+	visibility: hidden;
+	/*min-width: 600px;*/
+
+	background: rgba(0,0,0,0.75);
+	border-radius: 0 0 5px 5px;
+	margin-bottom: 20px;
+	padding: 8px 8px;
+}
+
+#bottomContainer {
+	position: absolute;
+	bottom: 5px;
+	z-index: 3;
+	visibility: hidden;
+	text-align: center;
+	min-width: 100px;
+
+	background: rgba(0,0,0,0.75);
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.statHeading {
+	color: white;
+}
+
+.statSuffix {
+	padding-left: 3px;
+	color: white;
+}
+
+#statsContainer {
+	width: 100%;
+	font-size: 18px;
+	color: white;
+	display: none;
+}
+
+#statusContainer {
+	position: absolute;
+	left: 5px;
+	bottom: 20px;
+	z-index: 2;
+	visibility: hidden;
+	background: rgba(0,0,0,0.75);
+	border-radius: 5px;
+	padding: 20px 20px 20px 20px;
+}
+
+#leftStatusContainer {
+	background: rgba(255,255,255,0.9);
+	border-radius: 5px;
+	padding: 10px;
+	margin-right: 10px;
+	color: black;
+	width: 260px;
+	float: left;
+	height: 150px;
+}
+
+#rightStatusContainer {
+	background: rgba(255,255,255,0.9);
+	border-radius: 5px;
+	padding: 10px;
+	color: black;
+	width: 260px;
+	float: right;
+	height: 150px;
+	overflow: auto;
+}
+
+#status_streetview {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-top: 5px;
+}
+
+#rightPop {
+	position: absolute;
+	left: -4200px;
+	top: 200px;
+	z-index: 2;
+	width: 5px;
+	height: 5px;
+}
+
+#leftPop {
+	position: absolute;
+	left: -4200px;
+	top: 200px;
+	z-index: 2;
+	width: 5px;
+	height: 5px;
+}
+
+.label {
+	font-weight: bold;
+}
+
+.value {
+	float: right;
+}
+
+.statValue {
+	color: rgb(20,230,255);
+}
+
+.carMessage {
+	border: 2px solid #ddd;
+	padding: 5px;
+}
+
+.carMessageDescription {
+	border-left: 1px solid #aaa;
+	padding: 0 5px 0 5px;
+	margin: 2px 5px 2px 5px;
+}
+
+.carMessageTime {
+	padding-top: 2px;
+	font-style: italic;
+}
+
+.carMessageActions {
+	padding: 0 0 0 0; 
+}
+
+.alert.noClose {
+	padding-right: 10px;
+}
+
+.chart {
+	z-index: 2;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	width: 180px;
+	height: 15px;
+	display: block;
+}
+
+#canvas {
+	position: absolute;
+	left: 0px;
+	z-index: 1;
+}
+
+.btn.active, .btn:active {
+	background-color: rgb(190,190,190) !important;
+}
+
+#openLayersMap {
+	position: absolute;
+	font-size: 60%;
+	width: 800px;
+	height: 600px;
+	z-index: 0;
+}
+img {
+	max-width: none;  /* needed for compatibility with bootstrap css */
+}
+a.disabled-link,
+a.disabled-link:visited,
+a.disabled-link:active,
+a.disabled-link:hover {
+	color: #aaa !important;
+}
+
+.popover.left .popover-title {
+	text-align: center;
+	font-size: 1.2em;
+}
+
+.popover {
+	left: -3000px;
+	opacity: 0.9;
+	box-shadow: rgba(0,0,0,0.7) 0px 0px 20px 10px;
+}
+
+.popover.right {
+	overflow: auto;
+}
+
+hr {
+	margin: 8px 0;
+}

@@ -1,0 +1,9 @@
+applications:
+- host: <your app host>
+  disk: 128M
+  name: <your app name>
+  command: node app.js
+  path: .
+  domain: mybluemix.net
+  mem: 128M
+  instances: 1

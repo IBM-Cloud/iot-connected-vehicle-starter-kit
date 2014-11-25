@@ -1,0 +1,19 @@
+{
+  "name":"iot-connected-vehicle-starter-kit",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "mqtt": "*",
+	"xml2js": "*",
+	"node-vincenty": "*",
+    "optimist": "*",
+	"express": ">=3.4.7 <4"
+  },
+  "engines": {
+		"node": "0.10.x"
+  },
+  "repository": {}
+}
