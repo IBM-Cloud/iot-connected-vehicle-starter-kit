@@ -1,4 +1,3 @@
-
 # Connected Vehicle Starter Kit
 -----
 ## Introduction
