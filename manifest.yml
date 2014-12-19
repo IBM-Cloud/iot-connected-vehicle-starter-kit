@@ -5,5 +5,5 @@ applications:
   command: node app.js
   path: .
   domain: mybluemix.net
-  mem: 128M
+  memory: 128M
   instances: 1
