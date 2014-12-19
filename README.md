@@ -19,11 +19,11 @@ If you do not already have an IBM Bluemix account, visit http://www.bluemix.net 
 
 - From your Bluemix dashboard, select **Add a Service**.
 
-![pic iot 1]
+    ![pic iot 1]
 
 - Choose **Internet of Things** from the service list.
 
-![pic iot 2]
+    ![pic iot 2]
 
 - Provide a service name that you will recognize later (ex. iot-trafficsim) — this service represents an **organization** in IoT Foundation, which is a shared space where devices and applications can securely connect and share data.  The service name you enter here is just for your reference, you will not collide with other users with the name iot-trafficsim.
 
@@ -31,7 +31,7 @@ If you do not already have an IBM Bluemix account, visit http://www.bluemix.net 
 
 - Click the **Launch** button in the top-right corner of the page to access your IoT organization dashboard.
 
-![pic iot 4]
+    ![pic iot 4]
 
 - From the dashboard, you will be able to manually register devices, generate API keys for applications, and invite others to your organization.
 
@@ -43,37 +43,39 @@ The Connected Vehicle simulator uses IoT Foundation for near real-time messaging
 
 The vehicle simulator allows you to model multiple vehicles from a single Node.js runtime instance.  Each vehicle simulator will be treated as a **device** by IoT Foundation.  You will eventually run 3 vehicle simulators, so the first step is to manually register these simulators to obtain access credentials.
 
->> REST APIs for device registration with IoT Foundation are also [available](https://developer.ibm.com/iot/recipes/api-documentation/#registerDevice)
+> REST APIs for device registration with IoT Foundation are also [available](https://developer.ibm.com/iot/recipes/api-documentation/#registerDevice)
 
 * From the organization dashboard's Devices tab, select **Add Device**.  In the Device Type dropdown, select **Create a device type...** and enter **vehicle** in the field below.  Choose a device ID of any length that will be unique to this organization (ex. ABC, DEF, GHI) and select **Continue**.
 
-![pic iot 6]
+    ![pic iot 6]
 
 * The next screen will show you credentials for your device.  For example:
 
 
-    org=o4ze1w
-    type=vehicle
-    id=ABC
-    auth-method=token
-    auth-token=5QK1rWHG9JhDw-rs+S
+        org=o4ze1w
+        type=vehicle
+        id=ABC
+        auth-method=token
+        auth-token=5QK1rWHG9JhDw-rs+S
+
 
 * Save this information in a file as you will need these credentials later.  
 
 * Now create two more devices and also save the credentials.  Note that when creating the first device, create a "type" of **vehicle**, so you can select that from the Device Type dropdown when creating subsequent devices.  For example, the other two device credentials may be:
 
 
-    org=o4ze1w
-    type=vehicle
-    id=DEF
-    auth-method=token
-    auth-token=Q7QmQ*!jQn6NUF&rA4
+        org=o4ze1w
+        type=vehicle
+        id=DEF
+        auth-method=token
+        auth-token=Q7QmQ*!jQn6NUF&rA4
     
-    org=o4ze1w
-    type=vehicle
-    id=GHI
-    auth-method=token
-    auth-token=4O_FET9iLe(4bK!))z
+    
+        org=o4ze1w
+        type=vehicle
+        id=GHI
+        auth-method=token
+        auth-token=4O_FET9iLe(4bK!))z
 
 
 #### 3.2 Generate an API key
@@ -85,15 +87,15 @@ You next will generate an API key for your organization.  An API key provides cr
 * Copy down the key and token, for example:
 
 
-    Key:        a-o4ze1w-b7xr3coycy
-    Auth Token: d4QD9Y@LcbrshlCD7q
+        Key:        a-o4ze1w-b7xr3coycy
+        Auth Token: d4QD9Y@LcbrshlCD7q
 
 
 * Again, save the key and token in a file as you will need them later.
 
 * On the API Keys tab, you will see a new table row for the key you just created.  Add a comment to the key to associate this with the Connected Vehicle application.
 
-![pic iot 8]
+    ![pic iot 8]
 
 
 ### 4. Configure (Starter Kit)
@@ -105,15 +107,15 @@ You next will generate an API key for your organization.  An API key provides cr
 * Enter this name for the **host** and **name** fields in  [manifest.yml](https://github.com/ibm-messaging/iot-connected-vehicle-starter-kit/blob/master/manifest.yml) and set the number of instances to **3**.
 
 
-    applications:
-    - host: bryancboyd-trafficsim
-      disk: 128M
-      name: bryancboyd-trafficsim
-      command: node app.js
-      path: .
-      domain: mybluemix.net
-      memory: 128M
-      instances: 3
+        applications:
+        - host: bryancboyd-trafficsim
+          disk: 128M
+          name: bryancboyd-trafficsim
+          command: node app.js
+          path: .
+          domain: mybluemix.net
+          memory: 128M
+          instances: 3
 
 
 * All configuration for IoT Foundation is found in [public/config/settings.js](https://github.com/ibm-messaging/iot-connected-vehicle-starter-kit/blob/master/public/config/settings.js).  This file is shared by the Node.js vehicle simulator and the Map and Tester apps, and stores all device tokens and API keys.
@@ -134,26 +136,26 @@ To deploy the Connected Vehicle application to Bluemix, use the Cloud Foundry [c
 * From the terminal, change to the root directory of this project and type:
 
 
-    cf login
+        cf login
 
 
 * Follow the prompts, entering **https://api.ng.bluemix.net** for the API endpoint, and your Bluemix IBM ID email and password as login credentials.  If you have more than one Bluemix organization and space available, you will also have to choose these.  Next, enter:
 
 
-    cf push
+        cf push
     
     
 * IF the application does not start successfully, view the error logs:
 
 
-    cf logs <your app name> --recent
+        cf logs <your app name> --recent
     
     
 * Check manifest.yml for errors, such as tabs in place of whitespace.
 
 * Now, visit the Map app at your URL: **http://APP_NAME.mybluemix.net**.  You will see the simulated vehicles moving across the map.  Click on a vehicle to view the telemetry data.
 
-![pic map 1]
+    ![pic map 1]
 
 ##### Increase the vehicle count per simulator
 
@@ -161,11 +163,11 @@ Each vehicle simulator can model multiple vehicles.  The number of vehicles is c
 
 * In the dashboard, click on the **SDK for Node.js** icon
 
-![pic vehicle count 1]
+    ![pic vehicle count 1]
 
 * Add a USER-DEFINED variable **VEHICLE_COUNT**, and select a value of 5.
 
-![pic vehicle count 2]
+    ![pic vehicle count 2]
 
 * Notice that the change was applied dynamically and the number of cars on the map increases.
 
@@ -181,13 +183,13 @@ The Tester app is used to send commands to the simulated vehicles and the Map ap
 * Select a vehicle, then enter the ID in the second form on the Tester page.
 * Enter a property of **speed** and a value of 120, and press **Update Property**.  An MQTT message will be published from the Tester app (topic and payload on screen), and the vehicle you chose will receive the message and change speed to 120 km/hr.
 
-![pic set property 1]
+    ![pic set property 1]
 
 The vehicles simulate a set of **static properties** (location, speed, state, and type) and **custom properties**.  The **setProperty** API allows you to dynamically add/change/delete a custom property on a vehicle.
 
 * To add a property, simply publish a property that doesn't yet exist.  For example, use property **driverWindow** and value **UP**:
 
-![pic set property 2]
+    ![pic set property 2]
 
 * To delete a property, update the property with an empty value; the vehicle will cease including the property in its telemetry message.
 
@@ -197,7 +199,7 @@ The Map app subscribes to commands of type **addOverlay**, to allow external app
 
 * In the Tester app, use the upper form to display a message over a vehicle, for example:
 
-![pic add overlay 1]
+    ![pic add overlay 1]
 
 ## Next Steps - Geospatial and Node-RED
 
