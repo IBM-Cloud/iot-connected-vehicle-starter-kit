@@ -2,6 +2,7 @@
 
 ## Introduction
 The "Connected Vehicle Starter Kit" consists of three applications:
+
 1. A Node.js connected vehicle simulator
 2. An OpenLayers HTML5 map application
 3. An HTML5 tester application to send commands
