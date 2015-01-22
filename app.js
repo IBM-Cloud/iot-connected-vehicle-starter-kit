@@ -41,6 +41,7 @@ var client = mqtt.createClient(1883, iot_server, { clientId: iot_clientid, usern
 
 console.log(JSON.stringify(process.env));
 var VEHICLE_COUNT = (argv.count ? argv.count : (process.env.VEHICLE_COUNT || 1));
+var TELEMETRY_RATE = (argv.rate ? argv.rate : (process.env.TELEMETRY_RATE || 2));
 
 console.log("Simulating " + VEHICLE_COUNT + " vehicles");
 
@@ -495,13 +496,13 @@ function mapLoaded() {
 	setInterval(function() {
 		drive();
 		publishVehicleData();
-	}, 200);
+	}, 1000 / TELEMETRY_RATE);
 }
 
 
 // setup middleware
 var express = require('express'),
-	http = require('http'),
+	https = require('https'),
 	path = require('path');
 var app = express();
 
@@ -656,7 +657,7 @@ if (geo_props) {
 				console.log('Do the GeospatialService_' + api.name + ' call');
 				 
 				// do the PUT call
-				var reqPut = http.request(options, function(res) {
+				var reqPut = https.request(options, function(res) {
 
 					// uncomment it for header details
 					console.log("headers: ", res.headers);
@@ -669,7 +670,11 @@ if (geo_props) {
 						console.log("\n" + route + ' completed');
 						console.log("statusCode: ", res.statusCode);
 						console.log("result:\n", result);
-						response.send(res.statusCode, result);
+						if (res.statusCode != 200) {
+							response.send(res.statusCode, "<h1>"+route+" failed with code: "+res.statusCode+"</h1>");
+						} else {
+							response.send(res.statusCode, "<h1>"+route+" succeeded!</h1><pre>" + JSON.stringify(result, null, 4) + "</pre>");
+						}
 					});
 					if (res.statusCode != 200) {
 						runError = 1;
