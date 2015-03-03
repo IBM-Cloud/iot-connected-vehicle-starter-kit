@@ -673,7 +673,11 @@ if (geo_props) {
 						if (res.statusCode != 200) {
 							response.send(res.statusCode, "<h1>"+route+" failed with code: "+res.statusCode+"</h1>");
 						} else {
-							response.send(res.statusCode, "<h1>"+route+" succeeded!</h1><pre>" + JSON.stringify(result, null, 4) + "</pre>");
+							if (route == "/GeospatialService_status") {
+								response.send(res.statusCode, result);
+							} else {
+								response.send(res.statusCode, "<h1>"+route+" succeeded!</h1><pre>" + JSON.stringify(result, null, 4) + "</pre>");
+							}
 						}
 					});
 					if (res.statusCode != 200) {
