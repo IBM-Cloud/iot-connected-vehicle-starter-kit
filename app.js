@@ -37,7 +37,11 @@ var iot_password = token;
 var iot_clientid = "d:" + settings.iot_deviceOrg + ":" + settings.iot_deviceType + ":" + deviceId
 
 console.log(iot_server, iot_clientid, iot_username, iot_password);
-var client = mqtt.createClient(1883, iot_server, { clientId: iot_clientid, username: iot_username, password: iot_password });
+var client = mqtt.createClient(1883, iot_server, { protocolId: 'MQIsdp', protocolVersion: 3, clientId: iot_clientid, username: iot_username, password: iot_password });
+
+client.on('connect', function() {
+    console.log('--> Client connected to Watson IOT platform!');
+});
 
 console.log(JSON.stringify(process.env));
 var VEHICLE_COUNT = (argv.count ? argv.count : (process.env.VEHICLE_COUNT || 1));
